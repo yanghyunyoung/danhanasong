@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>노래 만들기 · 단하나송</title>
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="style.css">
+<script src="config.js"></script>
+<script src="common.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <div id="demo" class="demo-banner" hidden>미리보기 모드예요 — 주문이 실제로 접수되지 않아요.</div>
+  <header class="top">
+    <button class="back" id="topBack">← 뒤로</button>
+    <a class="logo" href="./">단하나<b>송</b></a>
+  </header>
+  <div class="progress">
+    <div class="row"><span id="stepText"></span><b id="pctText"></b></div>
+    <div class="track"><i id="bar"></i></div>
+  </div>
+  <main id="screen"></main>
+  <nav class="nav">
+    <button class="btn small ghost" id="prev">← 뒤로</button>
+    <button class="btn small" id="next">다음 →</button>
+  </nav>
+</div>
+<script src="create.js"></script>
+</body>
+</html>

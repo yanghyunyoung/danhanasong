@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>{{TITLE}} · 단하나송</title>
+<meta property="og:title" content="{{TO}}님을 위한 노래가 도착했어요 🎁">
+<meta property="og:description" content="{{TITLE}}">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .gift { padding: 48px 24px 32px; text-align: center; background: radial-gradient(120% 80% at 50% 0%, #dbeafe 0%, #fff 70%); }
+  .gift .to { color: var(--blue); font-weight: 700; }
+  .gift h1 { font-size: 28px; letter-spacing: -1px; margin: 14px 0 26px; }
+  .big-play { width: 92px; height: 92px; border-radius: 50%; border: 0; background: var(--blue); color: #fff; font-size: 34px; cursor: pointer; box-shadow: 0 12px 30px rgba(49,130,246,.35); }
+  .time { margin-top: 14px; color: var(--ink-3); font-size: 14px; }
+  .lyrics { padding: 28px 24px 60px; white-space: pre-wrap; line-height: 1.9; font-size: 16px; color: var(--ink-2); text-align: center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="gift">
+    <div class="to">To. {{TO}}</div>
+    <h1>{{TITLE}}</h1>
+    <button class="big-play" id="p" aria-label="재생">▶</button>
+    <div class="time" id="t">눌러서 들어 보세요</div>
+    <div class="player" style="margin-top:22px;background:#fff"><div style="flex:1"><div class="bar"><i id="bar"></i></div></div></div>
+    <p style="margin-top:18px"><a href="song.mp3" download style="color:var(--ink-3);font-size:14px">MP3 내려받기</a></p>
+  </section>
+  <div class="lyrics">{{LYRICS}}</div>
+</div>
+<audio id="a" src="song.mp3" preload="metadata"></audio>
+<script>
+  const a = document.getElementById("a"), p = document.getElementById("p"), t = document.getElementById("t"), bar = document.getElementById("bar");
+  const mmss = (s) => Math.floor(s / 60) + ":" + String(Math.floor(s % 60)).padStart(2, "0");
+  p.onclick = () => (a.paused ? a.play() : a.pause());
+  a.onplay = () => (p.textContent = "❚❚");
+  a.onpause = () => (p.textContent = "▶");
+  a.ontimeupdate = () => { bar.style.width = (a.currentTime / a.duration) * 100 + "%"; t.textContent = mmss(a.currentTime) + " / " + mmss(a.duration || 0); };
+</script>
+</body>
+</html>

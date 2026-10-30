@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>주문 접수 완료 · 단하나송</title>
+<link rel="stylesheet" href="style.css">
+<script src="config.js"></script>
+<script src="common.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top"><a class="logo" href="./">단하나<b>송</b></a><span></span></header>
+  <section class="done">
+    <div class="check">✓</div>
+    <h1>주문이 접수됐어요!</h1>
+    <p><b id="who"></b>님을 위한 노래를 만들 준비를 시작할게요.</p>
+    <div class="order-no">주문번호 <span id="no"></span></div>
+
+    <div class="card" style="text-align:left">
+      <h3>다음 순서</h3>
+      <div class="summary-row"><span>1</span><b style="text-align:left;flex:1" id="pay1">아래 안내대로 <span data-price></span>을 보내 주세요.</b></div>
+      <div class="summary-row"><span>2</span><b style="text-align:left;flex:1">확인되면 바로 제작을 시작해요.</b></div>
+      <div class="summary-row"><span>3</span><b style="text-align:left;flex:1"><span data-hours></span>시간 안에 <span id="mail"></span>로 노래 링크를 보내 드려요.</b></div>
+    </div>
+
+    <div class="card" id="bankCard" style="text-align:left" hidden>
+      <h3>입금 안내</h3>
+      <p class="desc" id="bank" style="color:var(--ink);font-size:16px;font-weight:600;margin:6px 0"></p>
+      <p class="desc">입금자명에 주문번호 뒤 4자리를 함께 적어 주시면 더 빨리 확인돼요.</p>
+    </div>
+
+    <a class="btn full" id="kakao" hidden target="_blank">카카오톡으로 문의하기</a>
+    <p style="margin-top:20px;font-size:13px;color:var(--ink-3)">이 화면을 캡처해 두시면 편해요.</p>
+  </section>
+  <footer class="foot" data-foot></footer>
+</div>
+<script>
+  const C = window.DHS_CONFIG;
+  let o = {};
+  try { o = JSON.parse(sessionStorage.getItem("dhs_last_order") || "{}"); } catch (e) {}
+  if (!o.orderId) location.replace("./");
+  document.getElementById("who").textContent = o.name || "";
+  document.getElementById("no").textContent = o.orderId || "";
+  document.getElementById("mail").textContent = o.email || "이메일";
+  if (!C.bankInfo) document.getElementById("pay1").innerHTML = "주문 내용을 확인하고 결제 방법을 이메일로 안내해 드려요.";
+  if (C.bankInfo) { document.getElementById("bankCard").hidden = false; document.getElementById("bank").textContent = C.bankInfo; }
+  if (C.kakaoChannelUrl) { const k = document.getElementById("kakao"); k.hidden = false; k.href = C.kakaoChannelUrl; }
+</script>
+</body>
+</html>
