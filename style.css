@@ -176,3 +176,24 @@ button { font-family: inherit; }
 .doc { padding: 24px; font-size: 15px; line-height: 1.75; color: var(--ink-2); }
 .doc h1 { color: var(--ink); font-size: 24px; }
 .doc h2 { color: var(--ink); font-size: 18px; margin-top: 28px; }
+
+/* ---------- 안내 글 (guides/) ---------- */
+.article { padding: 28px 24px 8px; }
+.article .kicker { color: var(--blue); font-weight: 700; font-size: 14px; }
+.article h1 { font-size: 27px; line-height: 1.35; letter-spacing: -0.8px; margin: 8px 0 14px; }
+.article .meta { color: var(--ink-3); font-size: 13px; margin-bottom: 22px; }
+.article h2 { font-size: 21px; line-height: 1.4; letter-spacing: -0.5px; margin: 36px 0 12px; }
+.article p, .article li { color: var(--ink-2); font-size: 16px; line-height: 1.8; }
+.article p { margin: 0 0 14px; }
+.article ul { padding-left: 20px; margin: 0 0 14px; }
+.article li { margin-bottom: 6px; }
+.article li b, .article p b { color: var(--ink); }
+.cta-box { margin: 30px 0; padding: 22px 20px; border-radius: var(--radius); background: var(--blue-soft); }
+.cta-box b { display: block; font-size: 17px; margin-bottom: 6px; color: var(--ink); }
+.cta-box p { font-size: 14px; margin: 0 0 14px; }
+.related { padding: 8px 24px 36px; }
+.related h2, .guide-list h2 { font-size: 19px; margin: 0 0 12px; }
+.guide-link { display: block; padding: 16px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+.guide-link b { display: block; font-size: 16px; line-height: 1.5; }
+.guide-link span { display: block; color: var(--ink-3); font-size: 14px; line-height: 1.5; margin-top: 4px; }
+.guide-list { padding: 28px 24px 36px; }

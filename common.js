@@ -1,6 +1,8 @@
 // 모든 페이지 공용: 틱톡 픽셀, 사업자 정보 바닥글, 가격 표기
 (function () {
   const C = window.DHS_CONFIG || {};
+  // guides/ 같은 하위 폴더에서도 약관 링크가 맞도록 이 파일 위치를 기준으로 삼는다
+  const BASE = document.currentScript ? new URL(".", document.currentScript.src).href : "";
 
   window.won = (n) => "₩" + Number(n).toLocaleString("ko-KR");
 
@@ -62,7 +64,7 @@
         C.contactEmail && "문의 " + C.contactEmail,
       ].filter(Boolean);
       foot.innerHTML =
-        '<div><a href="terms.html">이용약관</a><a href="privacy.html"><b>개인정보처리방침</b></a></div>' +
+        '<div><a href="' + BASE + 'guides/">도움이 되는 글</a><a href="' + BASE + 'terms.html">이용약관</a><a href="' + BASE + 'privacy.html"><b>개인정보처리방침</b></a></div>' +
         (parts.length ? "<div style='margin-top:10px'>" + parts.join(" · ") + "</div>" : "") +
         "<div style='margin-top:10px'>© " + new Date().getFullYear() + " " + C.brand + "</div>";
     }
